@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WPF_College_Manager
 {
@@ -21,10 +23,37 @@ namespace WPF_College_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
+        SqlConnection sqlConnection ;
         public MainWindow()
         {
             InitializeComponent();
             string connectionString = ConfigurationManager.ConnectionStrings["WPF_College_Manager.Properties.Settings.DBDemoConnectionString"].ConnectionString;
+            sqlConnection = new SqlConnection(connectionString);
+            ShowDistricts();
+        }
+
+        private void ShowDistricts()
+        {
+            try
+            {
+                string query = "SELECT * from District";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable districtTable = new DataTable();
+                    sqlDataAdapter.Fill(districtTable);
+
+                    ListDistrict.DisplayMemberPath = "Location"; //sane as Column name
+                    ListDistrict.SelectedValuePath = "Id";
+                    ListDistrict.ItemsSource = districtTable.DefaultView;
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+           
         }
     }
 }
