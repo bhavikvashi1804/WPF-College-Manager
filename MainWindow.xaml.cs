@@ -135,7 +135,7 @@ namespace WPF_College_Manager
                 sqlConnection.Open();
                 sqlCommand.Parameters.AddWithValue("@districtId", ListDistrict.SelectedValue);
                 sqlCommand.ExecuteScalar();
-                ShowDistricts();
+                
             }
             catch(Exception exception)
             {
@@ -144,9 +144,37 @@ namespace WPF_College_Manager
             finally
             {
                 sqlConnection.Close();
+                ShowDistricts();
             }
             //MessageBox.Show("Delete District was clicked");
            
         }
+
+
+        private void AddDistrict_Click(object sender,EventArgs e)
+        {
+            try
+            {
+                string query = "insert into District values (@Location)";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@Location", UserInput.Text);
+                sqlCommand.ExecuteScalar();
+                UserInput.Text = "";
+               
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowDistricts();
+            }
+        }
+
+
     }
 }
