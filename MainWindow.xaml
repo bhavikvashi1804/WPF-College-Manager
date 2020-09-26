@@ -17,7 +17,7 @@
         <Button Content="Delete District" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165" Click="DeleteDistrict"/>
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="165" />
-        <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165" Click="AddCollegeToDistrict"/>
         <Button Content="Update District" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Update College" HorizontalAlignment="Left" Margin="203,293,0,0" VerticalAlignment="Top" Width="165"/>
         <TextBox Name="UserInput" HorizontalAlignment="Left" Height="32" Margin="10,245,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="358"/>

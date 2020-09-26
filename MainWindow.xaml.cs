@@ -151,7 +151,7 @@ namespace WPF_College_Manager
         }
 
 
-        private void AddDistrict_Click(object sender,EventArgs e)
+        private void AddDistrict_Click(object sender, EventArgs e)
         {
             try
             {
@@ -162,7 +162,7 @@ namespace WPF_College_Manager
                 sqlCommand.Parameters.AddWithValue("@Location", UserInput.Text);
                 sqlCommand.ExecuteScalar();
                 UserInput.Text = "";
-               
+
             }
             catch (Exception exception)
             {
@@ -176,5 +176,31 @@ namespace WPF_College_Manager
         }
 
 
+        protected void AddCollegeToDistrict(object sender,EventArgs e)
+        {
+            //MessageBox.Show("Add College To District");
+            try
+            {
+                string query = "insert into DistrictCollege values (@DistrictId,@CollegeId)";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@DistrictId", ListDistrict.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@CollegeId",ListAllCollege.SelectedValue);
+                sqlCommand.ExecuteScalar();
+                UserInput.Text = "";
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                //ShowDistricts();
+                ShowColleges();
+            }
+        }
     }
 }
