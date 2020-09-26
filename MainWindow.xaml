@@ -8,7 +8,9 @@
         Title="MainWindow" Height="500" Width="725">
     <Grid>
         <Label Content="District List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <ListBox Name="ListDistrict" HorizontalAlignment="Left" Height="248" Margin="10,36,0,0" VerticalAlignment="Top" Width="165"/>
+        <ListBox Name="ListDistrict" HorizontalAlignment="Left" Height="248" Margin="10,36,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ListDistrict_SelectionChanged"/>
+        <Label Content="College List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,10,0,0"/>
+        <ListBox Name="ListCollege" HorizontalAlignment="Left" Height="248" Margin="203,36,0,0" VerticalAlignment="Top" Width="165"/>
 
 
     </Grid>
