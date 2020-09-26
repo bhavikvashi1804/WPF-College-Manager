@@ -91,6 +91,7 @@ namespace WPF_College_Manager
         private void ListDistrict_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowColleges();
+            ShowSelectedDistrictInTextBox();
 
         }
 
@@ -228,6 +229,54 @@ namespace WPF_College_Manager
 
         }
 
+
+        protected void AddCollegeToCollegeTable(object sender,RoutedEventArgs e)
+        {
+
+            try
+            {
+                string query = "insert into College values (@Location)";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@Location", UserInput.Text);
+                sqlCommand.ExecuteScalar();
+                UserInput.Text = "";
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                //ShowDistricts();
+                ShowAllCollege();
+            }
+        }
         
+        private void ShowSelectedDistrictInTextBox()
+        {
+            try
+            {
+                string query = "select Location from District where Id = @DistrictId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@DistrictId", ListDistrict.SelectedValue);
+                    DataTable zooTable = new DataTable();
+                    sqlDataAdapter.Fill(zooTable);
+                    UserInput.Text = zooTable.Rows[0]["Location"].ToString();
+                }
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.ToString());
+            }
+        }
     }
 }
