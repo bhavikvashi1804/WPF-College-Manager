@@ -60,6 +60,7 @@ namespace WPF_College_Manager
 
         private void ShowColleges()
         {
+           
             try
             {
                 string query = "SELECT * from College c inner join DistrictCollege dc on c.Id = dc.CollegeId where dc.DistrictId = @districtID";
@@ -81,9 +82,9 @@ namespace WPF_College_Manager
                     ListCollege.ItemsSource = collegeTable.DefaultView;
                 }
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
             }
 
         }
@@ -267,9 +268,33 @@ namespace WPF_College_Manager
                 using (sqlDataAdapter)
                 {
                     sqlCommand.Parameters.AddWithValue("@DistrictId", ListDistrict.SelectedValue);
-                    DataTable zooTable = new DataTable();
-                    sqlDataAdapter.Fill(zooTable);
-                    UserInput.Text = zooTable.Rows[0]["Location"].ToString();
+                    DataTable disTable = new DataTable();
+                    sqlDataAdapter.Fill(disTable);
+                    UserInput.Text = disTable.Rows[0]["Location"].ToString();
+                }
+            }
+            catch (Exception exception)
+            {
+
+                //MessageBox.Show(exception.ToString());
+            }
+        }
+
+
+        private void ShowSelectedCollegeInTextBox()
+        {
+            try
+            {
+                string query = "select CollegeName from College where Id = @CollegeId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@CollegeId", ListAllCollege.SelectedValue);
+                    DataTable collegeTable = new DataTable();
+                    sqlDataAdapter.Fill(collegeTable);
+                    UserInput.Text = collegeTable.Rows[0]["CollegeName"].ToString();
                 }
             }
             catch (Exception exception)
@@ -278,5 +303,38 @@ namespace WPF_College_Manager
                 MessageBox.Show(exception.ToString());
             }
         }
+
+        private void ListAllCollege_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowSelectedCollegeInTextBox();
+        }
+
+
+        protected void UpdateDistrictName(object sender,RoutedEventArgs e)
+        {
+            //MessageBox.Show("Add College To District");
+            try
+            {
+                string query = "update District set Location = @NewValue where Id = @DistrictId";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@DistrictId", ListDistrict.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@NewValue", UserInput.Text);
+                sqlCommand.ExecuteScalar();
+                UserInput.Text = "";
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowDistricts();
+            }
+        }
+
     }
 }

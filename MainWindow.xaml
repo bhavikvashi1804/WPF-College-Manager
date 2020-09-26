@@ -11,14 +11,14 @@
         <ListBox Name="ListDistrict" HorizontalAlignment="Left" Height="187" Margin="10,36,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ListDistrict_SelectionChanged"/>
         <Label Content="College List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,10,0,0"/>
         <ListBox Name="ListCollege" HorizontalAlignment="Left" Height="187" Margin="203,36,0,0" VerticalAlignment="Top" Width="165"/>
-        <ListBox Name="ListAllCollege" HorizontalAlignment="Left" Height="317" Margin="392,57,0,0" VerticalAlignment="Top" Width="165"/>
+        <ListBox Name="ListAllCollege" HorizontalAlignment="Left" Height="317" Margin="392,57,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ListAllCollege_SelectionChanged"/>
         <Button Content="Add District" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" Width="165" Click="AddDistrict_Click"/>
         <Button Content="Add College" Click="AddCollegeToCollegeTable" HorizontalAlignment="Left" Margin="203,354,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Delete District" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="165" Click="DeleteDistrict"/>
         <Button Content="Remove College" HorizontalAlignment="Left" Margin="203,252,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="165" Click="DeleteCollegeClick" />
         <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165" Click="AddCollegeToDistrict"/>
-        <Button Content="Update District" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Update District" Click="UpdateDistrictName" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Update College" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
         <TextBox Name="UserInput" HorizontalAlignment="Left" Height="32" Margin="10,296,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="358"/>
 
