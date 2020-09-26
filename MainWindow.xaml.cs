@@ -202,5 +202,32 @@ namespace WPF_College_Manager
                 ShowColleges();
             }
         }
+
+        private void DeleteCollegeClick(object sender,RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "delete from College where Id = @collegeId";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@collegeId", ListAllCollege.SelectedValue);
+
+                sqlCommand.ExecuteScalar();
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowAllCollege();
+            }
+
+        }
+
+        
     }
 }
