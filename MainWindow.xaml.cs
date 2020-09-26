@@ -124,6 +124,29 @@ namespace WPF_College_Manager
             }
         }
 
-       
+        private void DeleteDistrict(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                string query = "delete from District where Id = @districtId";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@districtId", ListDistrict.SelectedValue);
+                sqlCommand.ExecuteScalar();
+                ShowDistricts();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            //MessageBox.Show("Delete District was clicked");
+           
+        }
     }
 }

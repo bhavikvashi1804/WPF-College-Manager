@@ -14,7 +14,7 @@
         <ListBox Name="ListAllCollege" HorizontalAlignment="Left" Height="317" Margin="392,57,0,0" VerticalAlignment="Top" Width="165"/>
         <Button Content="Add District" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" Width="165"/>
         <Button Content="Add College" HorizontalAlignment="Left" Margin="203,354,0,0" VerticalAlignment="Top" Width="165" />
-        <Button Content="Delete District" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Delete District" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165" Click="DeleteDistrict"/>
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="165" />
         <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165"/>
