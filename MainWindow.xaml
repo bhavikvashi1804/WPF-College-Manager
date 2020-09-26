@@ -19,7 +19,7 @@
         <Button Content="Delete College" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="165" Click="DeleteCollegeClick" />
         <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165" Click="AddCollegeToDistrict"/>
         <Button Content="Update District" Click="UpdateDistrictName" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165" />
-        <Button Content="Update College" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Update College" Click="UpdateCollegeName" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
         <TextBox Name="UserInput" HorizontalAlignment="Left" Height="32" Margin="10,296,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="358"/>
 
     </Grid>

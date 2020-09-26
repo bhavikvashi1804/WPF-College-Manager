@@ -300,7 +300,7 @@ namespace WPF_College_Manager
             catch (Exception exception)
             {
 
-                MessageBox.Show(exception.ToString());
+                //MessageBox.Show(exception.ToString());
             }
         }
 
@@ -333,6 +333,33 @@ namespace WPF_College_Manager
             {
                 sqlConnection.Close();
                 ShowDistricts();
+            }
+        }
+
+
+        protected void UpdateCollegeName(object sender, RoutedEventArgs e)
+        {
+           
+            try
+            {
+                string query = "update College set CollegeName = @NewValue where Id = @CollegeId";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@CollegeId",ListAllCollege.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@NewValue", UserInput.Text);
+                sqlCommand.ExecuteScalar();
+                UserInput.Text = "";
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowAllCollege();
             }
         }
 
