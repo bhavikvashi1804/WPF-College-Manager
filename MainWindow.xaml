@@ -5,13 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_College_Manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="725">
+        Title="College Manager" Height="480" Width="580">
     <Grid>
         <Label Content="District List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <ListBox Name="ListDistrict" HorizontalAlignment="Left" Height="248" Margin="10,36,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ListDistrict_SelectionChanged"/>
+        <ListBox Name="ListDistrict" HorizontalAlignment="Left" Height="187" Margin="10,36,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ListDistrict_SelectionChanged"/>
         <Label Content="College List" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,10,0,0"/>
-        <ListBox Name="ListCollege" HorizontalAlignment="Left" Height="248" Margin="203,36,0,0" VerticalAlignment="Top" Width="165"/>
-
+        <ListBox Name="ListCollege" HorizontalAlignment="Left" Height="187" Margin="203,36,0,0" VerticalAlignment="Top" Width="165"/>
+        <ListBox Name="ListAllCollege" HorizontalAlignment="Left" Height="317" Margin="392,57,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Add District" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Add College" HorizontalAlignment="Left" Margin="203,354,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Delete District" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Delete College" HorizontalAlignment="Left" Margin="203,394,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Delete College" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Add College to District" HorizontalAlignment="Left" Margin="392,16,0,0" VerticalAlignment="Top" Width="165"/>
+        <Button Content="Update District" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Width="165" />
+        <Button Content="Update College" HorizontalAlignment="Left" Margin="203,293,0,0" VerticalAlignment="Top" Width="165"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="10,245,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="358"/>
 
     </Grid>
 </Window>

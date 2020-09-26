@@ -30,6 +30,7 @@ namespace WPF_College_Manager
             string connectionString = ConfigurationManager.ConnectionStrings["WPF_College_Manager.Properties.Settings.DBDemoConnectionString"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
             ShowDistricts();
+            ShowAllCollege();
         }
 
         private void ShowDistricts()
@@ -92,5 +93,37 @@ namespace WPF_College_Manager
             ShowColleges();
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void ShowAllCollege()
+        {
+            try
+            {
+                string query = "select * from College";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable collegeTable = new DataTable();
+                    sqlDataAdapter.Fill(collegeTable);
+
+                    ListAllCollege.DisplayMemberPath = "CollegeName";
+                    ListAllCollege.SelectedValuePath = "Id";
+                    ListAllCollege.ItemsSource = collegeTable.DefaultView;
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+       
     }
 }
